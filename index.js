@@ -14,14 +14,14 @@ app.get('/health', (req, res) => {
         data_table = data_table.map(line => {
             return line.replace(/  +/g, ' ').split(' ')
         })
-        let i2g_data = data_table.find(r => r[5] === "/i2g_data/minio_data");
+        let i2g_data = data_table.find(r => r[5] === "/elasticsearch_data_disk");
         res.send({
             "Filesystem": i2g_data[0],
             "Size": i2g_data[1],
-            "Avail": i2g_data[2],
-            "Use%": i2g_data[3],
-            "Mounted": i2g_data[4],
-            "on": i2g_data[5],
+	    "Used": i2g_data[2],
+            "Avail": i2g_data[3],
+            "Use%": i2g_data[4],
+            "Mounted": i2g_data[5],
         })
     })
 })
